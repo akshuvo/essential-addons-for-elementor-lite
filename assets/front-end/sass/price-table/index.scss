@@ -430,6 +430,214 @@
 	border: none;
 }
 
+/*--- Pricing Table : Style 5 ---*/
+.eael-pricing.style-5 {
+	position: relative;
+	z-index: 0;
+	text-align: center;
+}
+
+.eael-pricing.style-5 .eael-pricing-item {
+	padding-bottom: 30px;
+	border-radius: 5px;
+	margin: 0px;
+	border: 1px solid rgba( 9, 9, 9, .1);
+}
+
+.eael-pricing.style-5 .eael-pricing-item.featured {
+	-webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	border: none;
+	padding-bottom: 60px;
+	margin-top: -30px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item.ribbon-1:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	background: #00C853;
+	top: -30px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item.ribbon-2:before {
+	content: "Featured";
+	position: absolute;
+	width: auto;
+	background: #00C853;
+	color: #fff;
+	top: 15px;
+	right: -15px;
+	z-index: 10;
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 5px 10px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item.ribbon-2:after {
+	content: "";
+	position: absolute;
+	top: 0px;
+	right: -15px;
+	width: 0;
+	height: 0;
+	border-bottom: 15px solid #00C853;
+	border-right: 15px solid transparent;
+	z-index: 9;
+	opacity: 0.9;
+}
+
+.eael-pricing.style-5 .eael-pricing-item.ribbon-3:before {
+	content: "Featured";
+	position: absolute;
+	width: auto;
+	background: rgba( 0, 0, 0, 0.6);
+	color: #fff;
+	top: -15px;
+	right: 15px;
+	z-index: 10;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 5px 15px;
+}
+
+.eael-pricing-item.featured.ribbon-4::before {
+	content: "Popular";
+	position: absolute;
+	top: 27px;
+	left: -27px;
+	width: 130px;
+	z-index: 10;
+	padding: 5px 41px;
+	font-size: 11px;
+	font-weight: 600;
+	background: #fff;
+	transform: rotate(-45deg);
+	clip-path: polygon(17% 0%, 83% 0%, 100% 100%, 0% 100%);
+	line-height: 1;
+}
+
+.eael-pricing.style-5 .eael-pricing-item.featured.ribbon-4::before{
+	top: -3px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .header {
+	background: #FBF8FF;
+	padding: 25px 30px;
+	margin-bottom: 15px;
+	position: relative;
+	z-index: 0;
+}
+
+
+.eael-pricing.style-5 .eael-pricing-item.featured .header{
+	background-color: transparent;
+	background-image: linear-gradient(90deg, rgba(129,65,255,1) 0, rgba(162,65,255,1) 100%);
+	border-radius: 5px;
+	padding-top: 55px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .header .icon i{
+	color: #a341ff;
+}
+.eael-pricing.style-5 .eael-pricing-item.featured .header .icon i{
+	color: #ffffff;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .header .title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 40px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item.featured .header .title {
+  color: #ffffff;
+}
+
+
+.eael-pricing.style-5 .eael-pricing-item .eael-pricing-tag {
+	position: relative;
+	z-index: 0;
+	padding: 15px 0px;
+	margin-bottom: 15px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .eael-pricing-tag:after {
+	content: "";
+	position: absolute;
+	width: 140px;
+	height: 1px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+	z-index: 1;
+	background: rgba( 9, 9, 9, .04);
+}
+
+.eael-pricing.style-5 .eael-pricing-item .price-tag {
+	position: relative;
+	display: inline-block;
+	font-size: 35px;
+	font-weight: 600;
+	line-height: 0px;
+	margin: 0px auto;
+	color: #7f41ff;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .price-tag .price-currency {
+	font-size: 35px;
+	font-weight: 600;
+	color: #7f41ff;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .price-period {
+	color: #999;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .body ul {
+	display: block;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.eael-pricing.style-5 .eael-pricing-item .body ul li{
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 10px 15px;
+	font-size: 14px;
+	color: #6d6d6d;
+	border-bottom: 1px solid rgba( 9, 9, 9, .04);
+}
+
+.eael-pricing.style-5 .eael-pricing-item .body ul li:last-child {
+	border: none;
+}
+
+.eael-pricing.style-5 .eael-pricing-button {
+	background-color: transparent;
+	background-image: linear-gradient(90deg, rgba(129,65,255,1) 0, rgba(162,65,255,1) 100%);
+	border-radius: 33px;
+	text-transform: capitalize;
+	line-height: 18px;
+	padding: 12px 32px;
+}
+
+.eael-pricing.style-5 .eael-pricing-button:hover{
+	background-color: transparent;
+	background-image: linear-gradient(90deg, rgba(162,65,255,1) 0%, rgba(129,65,255,1) 100%);
+}
 
 /*--- Media Query ---*/
 @media only screen and ( min-width: 768px) and (max-width: 992px) {
