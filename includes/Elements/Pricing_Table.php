@@ -55,6 +55,8 @@ class Pricing_Table extends Widget_Base {
 					'style-3' 	=> esc_html__( 'Pricing Style 3 (Pro)', 'essential-addons-elementor' ),
 					'style-4' 	=> esc_html__( 'Pricing Style 4 (Pro)', 'essential-addons-elementor' ),
 					'style-5' 	=> esc_html__( 'Pricing Style 5', 'essential-addons-elementor' ),
+					'style-6' 	=> esc_html__( 'Pricing Style 6', 'essential-addons-elementor' ),
+					'style-7' 	=> esc_html__( 'Pricing Style 7', 'essential-addons-elementor' ),
 				],
 				'conditions'	=> ['style-3', 'style-4']
 			]
@@ -141,7 +143,6 @@ class Pricing_Table extends Widget_Base {
 			]
 		);
 
-
 		/**
 		 * Condition: 'eael_pricing_table_style' => 'style-5'
 		 */
@@ -158,6 +159,84 @@ class Pricing_Table extends Widget_Base {
 				'condition' => [
 					'eael_pricing_table_style' => 'style-5'
 				]
+			]
+		);
+
+		/**
+		 * Condition: 'eael_pricing_table_style' => 'style-6'
+		 */
+		$this->add_control(
+			'eael_new_pricing_table_style_icon_new',
+			[
+				'label' => esc_html__( 'Icon', 'essential-addons-elementor' ),
+				'type' => Controls_Manager::ICONS,
+				'fa4compatibility' => 'eael_new_pricing_table_style_icon',
+				'default' => [
+					'value' => 'fas fa-rocket',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'eael_pricing_table_style' => 'style-6'
+				]
+			]
+		);
+
+		$this->add_control(
+			'eael_new_pricing_table_header_icon_indent',
+			[
+				'label' => esc_html__( 'Icon Spacing', 'essential-addons-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 60,
+					],
+				],
+				'condition' => [
+					'eael_pricing_table_style' => 'style-6'
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header .icon' => 'margin-right: {{SIZE}}px;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'eael_new_pricing_table_header_icon_size',
+			[
+				'label' => esc_html__( 'Icon Size', 'essential-addons-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default'	=> [
+					'size'	=> 20,
+					'unit'	=> 'px'
+				],
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
+				'condition' => [
+					'eael_pricing_table_style' => 'style-6'
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header .icon' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header .icon img' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header .icon i' => 'font-size: {{SIZE}}{{UNIT}};'
+				]
+			]
+		);
+
+		$this->add_control(
+			'eael_new_pricing_table_header_icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'essential-addons-elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'condition' => [
+					'eael_pricing_table_style' => 'style-6'
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header .icon i' => 'color: {{VALUE}};',
+				],
 			]
 		);
 
@@ -249,7 +328,10 @@ class Pricing_Table extends Widget_Base {
 				'label' => esc_html__( 'Period Separator', 'essential-addons-elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => false,
-				'default' => esc_html__( '/', 'essential-addons-elementor' )
+				'default' => esc_html__( '/', 'essential-addons-elementor' ),
+				'condition' => [
+					'eael_pricing_table_style!' => 'style-7'
+				]
 			]
 		);
 
@@ -306,7 +388,6 @@ class Pricing_Table extends Widget_Base {
 						'name' => 'eael_pricing_table_list_icon_color',
 						'label' => esc_html__( 'Icon Color', 'essential-addons-elementor' ),
 						'type' => Controls_Manager::COLOR,
-						'default' => '#00C853',
 					],
 					[
 						'name'			=> 'eael_pricing_item_tooltip',
@@ -535,6 +616,7 @@ class Pricing_Table extends Widget_Base {
 					'ribbon-2' => esc_html__( 'Style 2', 'essential-addons-elementor' ),
 					'ribbon-3' => esc_html__( 'Style 3', 'essential-addons-elementor' ),
 					'ribbon-4' => esc_html__( 'Style 4', 'essential-addons-elementor' ),
+					'ribbon-5' => esc_html__( 'Style 5', 'essential-addons-elementor' ),
 				],
 				'condition' => [
 					'eael_pricing_table_featured' => 'yes',
@@ -556,9 +638,11 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.featured:before' => 'content: "{{VALUE}}";',
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.featured:before' => 'content: "{{VALUE}}";',
 					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.featured:before' => 'content: "{{VALUE}}";',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.featured:before' => 'content: "{{VALUE}}";',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.featured:before' => 'content: "{{VALUE}}";',
 				],
 				'condition' => [
-					'eael_pricing_table_featured_styles' => [ 'ribbon-2', 'ribbon-3', 'ribbon-4' ],
+					'eael_pricing_table_featured_styles' => [ 'ribbon-2', 'ribbon-3', 'ribbon-4', 'ribbon-5' ],
 					'eael_pricing_table_featured' => 'yes'
 				]
 			]
@@ -666,6 +750,7 @@ class Pricing_Table extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eael-pricing .eael-pricing-item' => 'border-radius: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header' => 'border-radius: {{SIZE}}px;',
 				],
 			]
 		);
@@ -769,6 +854,8 @@ class Pricing_Table extends Widget_Base {
 		/**
 		 * -------------------------------------------
 		 * Condition: 'eael_pricing_table_style' => 'style-2'
+		 * Condition: 'eael_pricing_table_style' => 'style-4'
+		 * Condition: 'eael_pricing_table_style' => 'style-6'
 		 * -------------------------------------------
 		 */
 
@@ -777,13 +864,13 @@ class Pricing_Table extends Widget_Base {
 			[
 				'label'     => esc_html__( 'Background Color', 'essential-addons-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#C8E6C9',
 				'selectors' => [
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item .header' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item .header' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item .header' => 'background: {{VALUE}};',
 				],
 				'condition' => [
-					'eael_pricing_table_style' => ['style-2']
+					'eael_pricing_table_style' => ['style-2', 'style-4', 'style-6']
 				]
 			]
 		);
@@ -837,7 +924,7 @@ class Pricing_Table extends Widget_Base {
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => [
-					'eael_pricing_table_style!' => ['style-1', 'style-5']
+					'eael_pricing_table_style!' => ['style-1', 'style-5', 'style-6', 'style-7']
 				]
 			]
 		);
@@ -852,7 +939,7 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing-item .header .subtitle' => 'color: {{VALUE}};',
 				],
 				'condition' => [
-					'eael_pricing_table_style!' => ['style-1', 'style-5']
+					'eael_pricing_table_style!' => ['style-1', 'style-5', 'style-6', 'style-7']
 				]
 			]
 		);
@@ -863,7 +950,7 @@ class Pricing_Table extends Widget_Base {
              	'name'      => 'eael_pricing_table_subtitle_typography',
              	'selector'  => '{{WRAPPER}} .eael-pricing-item .header .subtitle',
              	'condition' => [
-					'eael_pricing_table_style!' => ['style-1', 'style-5']
+					'eael_pricing_table_style!' => ['style-1', 'style-5', 'style-6', 'style-7']
 				]
 			]
 
@@ -957,28 +1044,9 @@ class Pricing_Table extends Widget_Base {
 			[
 				'label'     => esc_html__( 'Color', 'essential-addons-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#00C853',
 				'selectors' => [
 					'{{WRAPPER}} .eael-pricing-item .price-tag .price-currency' => 'color: {{VALUE}};',
 				],
-				'condition' => [
-					'eael_pricing_table_style!' =>  'style-5'
-				]
-			]
-		);
-
-		$this->add_control(
-			'eael_pricing_table_style_5_pricing_curr_color',
-			[
-				'label'     => esc_html__( 'Color', 'essential-addons-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#7f41ff',
-				'selectors' => [
-					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item .price-tag .price-currency' => 'color: {{VALUE}};',
-				],
-				'condition' => [
-					'eael_pricing_table_style' =>  'style-5'
-				]
 			]
 		);
 
@@ -1126,6 +1194,9 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-1:before' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-1:before' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-1:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-1:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-1:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-1:before' => 'background: {{VALUE}};',
 				],
 				'condition' => [
 					'eael_pricing_table_featured' => 'yes',
@@ -1152,6 +1223,9 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-1:before' => 'height: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-1:before' => 'height: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-1:before' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-1:before' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-1:before' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-1:before' => 'height: {{SIZE}}px;',
 				],
 				'condition' => [
 					'eael_pricing_table_featured' => 'yes',
@@ -1178,16 +1252,38 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-2:before' => 'font-size: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-2:before' => 'font-size: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-2:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-2:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-2:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-7.eael-pricing-item.ribbon-2:before' => 'font-size: {{SIZE}}px;',
 
 					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-3:before' => 'font-size: {{SIZE}}px;',
+
+					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-4:before' => 'font-size: {{SIZE}}px;',
+
+					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-5:before' => 'font-size: {{SIZE}}px;',
 
 				],
 				'condition' => [
 					'eael_pricing_table_featured' => 'yes',
-					'eael_pricing_table_featured_styles' => ['ribbon-2', 'ribbon-3']
+					'eael_pricing_table_featured_styles' => ['ribbon-2', 'ribbon-3', 'ribbon-4', 'ribbon-5']
 				],
 			]
 		);
@@ -1203,11 +1299,33 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-2:before' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-2:before' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-2:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-2:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-2:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-2:before' => 'color: {{VALUE}};',
 
 					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-3:before' => 'color: {{VALUE}};',
+
+					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-4:before' => 'color: {{VALUE}};',
+
+					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-5:before' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'eael_pricing_table_featured' => 'yes',
@@ -1226,18 +1344,44 @@ class Pricing_Table extends Widget_Base {
 					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-1 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
 
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-2 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
 
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-3 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
 
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
 					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-4 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
+
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
+
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-6 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
+
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-2:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-2:after' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-3:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-4:before' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .eael-pricing.style-7 .eael-pricing-item.ribbon-5:before' => 'background: {{VALUE}};',
 				],
 				'condition' => [
 					'eael_pricing_table_featured' => 'yes',
@@ -1751,7 +1895,6 @@ class Pricing_Table extends Widget_Base {
 				[
 					'label' => esc_html__( 'Background Color', 'essential-addons-elementor' ),
 					'type' => Controls_Manager::COLOR,
-					'default' => '#00C853',
 					'selectors' => [
 						'{{WRAPPER}} .eael-pricing .eael-pricing-button' => 'background: {{VALUE}};',
 					],
@@ -1768,6 +1911,9 @@ class Pricing_Table extends Widget_Base {
 					'label' => __( 'Background Color', 'essential-addons-elementor' ),
 					'types' => [ 'classic', 'gradient' ],
 					'selector' => '{{WRAPPER}} .eael-pricing.style-5 .eael-pricing-button',
+					'condition'	=> [
+						'eael_pricing_table_style!' => 'style-6'
+					],
 				]
 			);
 
@@ -1818,7 +1964,6 @@ class Pricing_Table extends Widget_Base {
 				[
 					'label' => esc_html__( 'Background Color', 'essential-addons-elementor' ),
 					'type' => Controls_Manager::COLOR,
-					'default' => '#03b048',
 					'selectors' => [
 						'{{WRAPPER}} .eael-pricing .eael-pricing-button:hover' => 'background: {{VALUE}};',
 					],
@@ -2116,6 +2261,101 @@ foreach ($settings['eael_pricing_table_items'] as $item):
 		</div>
 	</div>
 	<?php endif; ?>
+	<?php if ( 'style-6' === $settings['eael_pricing_table_style'] ): ?>
+		<div class="eael-pricing style-6">
+			<div class="eael-pricing-item <?php echo esc_attr( $featured_class ); ?>">
+				<div class="header">
+		            <span class="icon" >
+						<?php if (empty($settings['eael_new_pricing_table_style_icon']) || isset($settings['__fa4_migrated']['eael_new_pricing_table_style_icon_new'])) { ?>
+							<?php if( isset($settings['eael_new_pricing_table_style_icon_new']['value']['url']) ) : ?>
+								<img src="<?php echo esc_attr( $settings['eael_new_pricing_table_style_icon_new']['value']['url'] ); ?>" alt="<?php echo esc_attr(get_post_meta($settings['eael_new_pricing_table_style_icon_new']['value']['id'], '_wp_attachment_image_alt', true)); ?>"/>
+							<?php else : ?>
+								<i class="<?php echo esc_attr( $settings['eael_new_pricing_table_style_icon_new']['value'] ); ?>"></i>
+							<?php endif; ?>
+						<?php } else { ?>
+							<i class="<?php echo esc_attr( $settings['eael_new_pricing_table_style_icon'] ); ?>"></i>
+						<?php } ?>
+					</span>
+					<h2 class="title"><?php echo $settings['eael_pricing_table_title']; ?></h2>
+				</div>
+		        <div class="eael-pricing-tag">
+		            <span class="price-tag"><?php echo $pricing; ?></span>
+		            <span class="price-period"><?php echo $settings['eael_pricing_table_period_separator']; ?> <?php echo $settings['eael_pricing_table_price_period']; ?></span>
+		        </div>
+		        <div class="body">
+		            <?php $this->render_feature_list($settings, $this); ?>
+		        </div>
+		        <div class="footer">
+			    	<a href="<?php echo esc_url( $settings['eael_pricing_table_btn_link']['url'] ); ?>" <?php echo $target; ?> <?php echo $nofollow; ?> class="eael-pricing-button">
+			    		<?php if( 'left' == $settings['eael_pricing_table_button_icon_alignment'] ) : ?>
+							<?php if (empty($settings['eael_pricing_table_button_icon']) || isset($settings['__fa4_migrated']['eael_pricing_table_button_icon_new'])) { ?>
+								<?php if ( isset( $settings['eael_pricing_table_button_icon_new']['value']['url'] ) ) : ?><img src="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value']['url'] ); ?>" class="fa-icon-left" alt="<?php echo esc_attr(get_post_meta($settings['eael_pricing_table_button_icon_new']['value']['id'], '_wp_attachment_image_alt', true)); ?>"></i>
+								<?php else : ?>
+									<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value'] ); ?> fa-icon-left"></i>
+								<?php endif; ?>
+							<?php } else { ?>
+								<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon'] ); ?> fa-icon-left"></i>
+							<?php } ?>
+							<?php echo $settings['eael_pricing_table_btn']; ?>
+						<?php elseif( 'right' == $settings['eael_pricing_table_button_icon_alignment'] ) : ?>
+							<?php echo $settings['eael_pricing_table_btn']; ?>
+							<?php if (empty($settings['eael_pricing_table_button_icon']) || isset($settings['__fa4_migrated']['eael_pricing_table_button_icon_new'])) { ?>
+								<?php if( isset($settings['eael_pricing_table_button_icon_new']['value']['url']) ) : ?>
+									<img src="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value']['url'] ); ?>" class="fa-icon-right" alt="<?php echo esc_attr(get_post_meta($settings['eael_pricing_table_button_icon_new']['value']['id'], '_wp_attachment_image_alt', true)); ?>">
+								<?php else : ?>
+									<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value'] ); ?> fa-icon-right"></i>
+								<?php endif; ?>
+							<?php } else { ?>
+								<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon'] ); ?> fa-icon-right"></i>
+							<?php } ?>
+			        	<?php endif; ?>
+			    	</a>
+			    </div>
+			</div>	
+		</div>
+	<?php endif ?>
+	<?php if (  'style-7' === $settings['eael_pricing_table_style']  ): ?>
+		<div class="eael-pricing style-7">
+			<div  class="eael-pricing-item <?php echo esc_attr( $featured_class ); ?>">
+				<div class="header">
+					<h2 class="title"><?php echo $settings['eael_pricing_table_title']; ?></h2>
+				</div>
+		        <div class="eael-pricing-tag">
+		            <span class="price-tag"><?php echo $pricing; ?></span>
+		            <span class="price-period"><?php echo $settings['eael_pricing_table_price_period']; ?></span>
+		        </div>
+		        <div class="body">
+		            <?php $this->render_feature_list($settings, $this); ?>
+		        </div>
+		        <div class="footer">
+			    	<a href="<?php echo esc_url( $settings['eael_pricing_table_btn_link']['url'] ); ?>" <?php echo $target; ?> <?php echo $nofollow; ?> class="eael-pricing-button">
+			    		<?php if( 'left' == $settings['eael_pricing_table_button_icon_alignment'] ) : ?>
+							<?php if (empty($settings['eael_pricing_table_button_icon']) || isset($settings['__fa4_migrated']['eael_pricing_table_button_icon_new'])) { ?>
+								<?php if ( isset( $settings['eael_pricing_table_button_icon_new']['value']['url'] ) ) : ?><img src="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value']['url'] ); ?>" class="fa-icon-left" alt="<?php echo esc_attr(get_post_meta($settings['eael_pricing_table_button_icon_new']['value']['id'], '_wp_attachment_image_alt', true)); ?>"></i>
+								<?php else : ?>
+									<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value'] ); ?> fa-icon-left"></i>
+								<?php endif; ?>
+							<?php } else { ?>
+								<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon'] ); ?> fa-icon-left"></i>
+							<?php } ?>
+							<?php echo $settings['eael_pricing_table_btn']; ?>
+						<?php elseif( 'right' == $settings['eael_pricing_table_button_icon_alignment'] ) : ?>
+							<?php echo $settings['eael_pricing_table_btn']; ?>
+							<?php if (empty($settings['eael_pricing_table_button_icon']) || isset($settings['__fa4_migrated']['eael_pricing_table_button_icon_new'])) { ?>
+								<?php if( isset($settings['eael_pricing_table_button_icon_new']['value']['url']) ) : ?>
+									<img src="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value']['url'] ); ?>" class="fa-icon-right" alt="<?php echo esc_attr(get_post_meta($settings['eael_pricing_table_button_icon_new']['value']['id'], '_wp_attachment_image_alt', true)); ?>">
+								<?php else : ?>
+									<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon_new']['value'] ); ?> fa-icon-right"></i>
+								<?php endif; ?>
+							<?php } else { ?>
+								<i class="<?php echo esc_attr( $settings['eael_pricing_table_button_icon'] ); ?> fa-icon-right"></i>
+							<?php } ?>
+			        	<?php endif; ?>
+			    	</a>
+			    </div>	
+			</div>
+		</div>
+	<?php endif ?>
 	<?php
 		do_action('add_pricing_table_style_block', $settings, $this, $pricing, $target, $nofollow, $featured_class);
 	}
